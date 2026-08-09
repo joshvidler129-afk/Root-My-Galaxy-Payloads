@@ -1,3 +1,4 @@
+does include A17 5G SM-A176B firmware and exploit files in process just tinkering little bugs for functionality 
 almost have A17 5G SM-A176B working 
 
 # Root My Galaxy Payloads
