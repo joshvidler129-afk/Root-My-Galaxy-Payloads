@@ -220,7 +220,7 @@
             ],
             "exploit": {
                 "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
-                "size": 127152
+                "size": 127120
             },
             "kernelsu": {
                 "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/kernelsu/ksud-dm3q-S9180ZHS8FZF5-kdp",
