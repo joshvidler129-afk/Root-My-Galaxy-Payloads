@@ -1,0 +1,22 @@
+<uses-permission android:name="android.permission.INTERNET" />
+
+<!--
+  Manifest snippet: runtime URLs for A17 artifacts and KernelSU KO.
+  The application must read this meta-data at runtime and download the
+  listed artifacts. Values are comma-separated raw.githubusercontent URLs.
+-->
+<application>
+  <meta-data
+    android:name="com.rootmygalaxy.a17_urls"
+    android:value="https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so,https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-root,https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/kernelsu/android13-5.15.189_kernelsu-dm3q-S9180ZHS8FZF5.ko" />
+
+  <!-- Additional meta-data entries referencing other patched artifacts
+       (these reflect the latest assets currently present in the support feed)
+       The app may read these keys individually if preferred. -->
+  <meta-data android:name="com.rootmygalaxy.a17_exploit"
+             android:value="https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so" />
+  <meta-data android:name="com.rootmygalaxy.a17_root"
+             android:value="https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-root" />
+  <meta-data android:name="com.rootmygalaxy.kernelsu_ko"
+             android:value="https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/kernelsu/android13-5.15.189_kernelsu-dm3q-S9180ZHS8FZF5.ko" />
+</application>
