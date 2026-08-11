@@ -218,9 +218,10 @@
             "kernelVersions": [
                 "5.15.189"
             ],
+            "requiresFreshP0Session": true,
             "exploit": {
                 "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
-                "size": 125928
+                "size": 131992
             },
             "kernelsu": {
                 "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/kernelsu/ksud-dm3q-S9180ZHS8FZF5-kdp",
