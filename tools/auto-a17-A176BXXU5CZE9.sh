@@ -53,10 +53,10 @@ MIN_UPTIME_SEC=30
 #   SLIDE_PSELECT_WORD_SHIFT=0 sh auto-a17-A176BXXU5CZE9.sh
 # If the device reboots immediately on the pselect race, try 0,1,2,4,5,6
 # in sequence (one per boot) until the race succeeds without panic.
-PSELECT_WORD_SHIFT="${SLIDE_PSELECT_WORD_SHIFT:-3}"
+PSELECT_WORD_SHIFT="${SLIDE_PSELECT_WORD_SHIFT:-0}"
 
 # Exploit tuning knobs for A17 (adjust if reliability is poor)
-EXPLOIT_ATTEMPTS="${EXPLOIT_ATTEMPTS:-16}"
+EXPLOIT_ATTEMPTS="${EXPLOIT_ATTEMPTS:-32}"
 PSELECT_DELAY_USEC="${PSELECT_DELAY_USEC:-50000}"
 EXPLOIT_ATTEMPT_TIMEOUT_SEC="${EXPLOIT_ATTEMPT_TIMEOUT_SEC:-30}"
 P0_ATTEMPT_TIMEOUT_SEC="${P0_ATTEMPT_TIMEOUT_SEC:-15}"
@@ -258,7 +258,7 @@ wait "$EXPLOIT_PID" 2>/dev/null || true
 if ! su -c "id" 2>/dev/null | grep -q "uid=0"; then
     err "Exploit did not achieve root.  Check logcat for slide-* / kernelsnitch messages.
 Possible causes:
-  1. Wrong SLIDE_PSELECT_WORD_SHIFT ($PSELECT_WORD_SHIFT) — reboot, try another value 0-6
+  1. Race not won in $EXPLOIT_ATTEMPTS attempts — reboot, run again (SHIFT=$PSELECT_WORD_SHIFT is likely correct)
   2. Not a fresh boot session — reboot and run within 2 min of boot completing
   3. KASLR leak failed — verify sched_blocked_reason event id=108 matches kernel
   4. P0 oracle miss — ensure firmware is A176BXXU5CZE9 (not another A17 variant)"
@@ -310,6 +310,6 @@ ok "=== A17 exploit complete ==="
 ok "Install KernelSU Manager APK to manage modules:"
 ok "  https://github.com/tiann/KernelSU/releases"
 ok ""
-ok "If pselect caused a kernel panic and device rebooted, reboot again and run:"
-ok "  SLIDE_PSELECT_WORD_SHIFT=<N> sh auto-a17-A176BXXU5CZE9.sh"
-ok "where N is 0,1,2,4,5,6 (current value was $PSELECT_WORD_SHIFT, try incrementally)"
+ok "If pselect caused a kernel panic and device rebooted, reboot again and run with more attempts:"
+ok "  EXPLOIT_ATTEMPTS=64 sh auto-a17-A176BXXU5CZE9.sh"
+ok "Current SLIDE_PSELECT_WORD_SHIFT=$PSELECT_WORD_SHIFT (A17/Exynos default)"
