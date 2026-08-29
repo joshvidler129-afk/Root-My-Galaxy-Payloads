@@ -27,6 +27,12 @@ ROOT_BIN="$WORK/cve-2026-43499-root"
 KSUD_BIN="$WORK/ksud"
 KO_FILE="$WORK/kernelsu.ko"
 
+# Push these from your Mac before running:
+#   adb push artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so /data/local/tmp/a17-exploit/cve-2026-43499-app.so
+#   adb push artifacts/a17-A176BXXU5CZE9/cve-2026-43499-root   /data/local/tmp/a17-exploit/cve-2026-43499-root
+#   adb push artifacts/a17-A176BXXU5CZE9/ksud                  /data/local/tmp/a17-exploit/ksud
+#   adb push artifacts/a17-A176BXXU5CZE9/kernelsu.ko           /data/local/tmp/a17-exploit/kernelsu.ko
+
 # The app payload is loaded via LD_PRELOAD; the host process just needs to
 # block long enough for the exploit to complete.
 HOST_BIN="/system/bin/sleep"
@@ -130,14 +136,14 @@ download \
     25912
 
 download \
-    "$REPO_RAW/kernelsu/ksud-dm3q-S9180ZHS8FZF5-kdp" \
+    "$REPO_RAW/artifacts/a17-A176BXXU5CZE9/ksud" \
     "$KSUD_BIN" \
-    4556352
+    0
 
 download \
-    "$REPO_RAW/kernelsu/android13-5.15.189_kernelsu-dm3q-S9180ZHS8FZF5.ko" \
+    "$REPO_RAW/artifacts/a17-A176BXXU5CZE9/kernelsu.ko" \
     "$KO_FILE" \
-    227224
+    0
 
 chmod 755 "$EXPLOIT_SO" "$ROOT_BIN" "$KSUD_BIN" "$KO_FILE"
 
