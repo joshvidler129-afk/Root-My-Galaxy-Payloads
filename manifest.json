@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 2,
+  "targets": [
+    {
+      "profileId": "a17-A176BXXU5CZE9",
+      "manufacturer": "samsung",
+      "model": "SM-A176B",
+      "device": "a17x",
+      "kernelRelease": "5.15.189-android13-3-33504235",
+      "exploit": {
+        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
+        "size": 0
+      },
+      "kernelsu": {
+        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/artifacts/a17-A176BXXU5CZE9/ksud",
+        "size": 0
+      },
+      "kernelsuModule": {
+        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/artifacts/a17-A176BXXU5CZE9/kernelsu.ko",
+        "size": 0
+      }
+    }
+  ]
+}
