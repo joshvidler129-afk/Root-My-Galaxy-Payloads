@@ -307,13 +307,8 @@ void setup_kernelsnitch(void) {
   configure_kernelsnitch_profile(ks, PAGE_PAYLOAD_SLIDE);
 #else
   ks = kernelsnitch_setup(
-      MM_STRUCT_SZ, MM_ORDER, cpu_count, KSNITCH_COLLISIONS, 0, 0);
-#if defined(APP_PHYS_P0_ORACLE) && APP_PHYS_P0_ORACLE
-  kernelsnitch_set_profile(
-      ks, SLIDE_KSNITCH_APPENDED_FUTEXES,
-      SLIDE_KSNITCH_REPEAT_MEASUREMENT,
-      SLIDE_KSNITCH_AVERAGE);
-#endif
+      MM_STRUCT_SZ, MM_ORDER, cpu_count, KSNITCH_COLLISIONS, 1, 0);
+  kernelsnitch_set_profile(ks, 512, 64, 8);
 #endif
 }
 

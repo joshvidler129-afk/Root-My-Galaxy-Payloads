@@ -169,7 +169,7 @@ __attribute__((constructor)) static void load(void) {
       pr_success("exploit attempt=%d/%d pid=%d delay=%d\n",
                  attempt, max_attempts, getpid(), delay_usec);
 #endif
-      _exit(run_exploit(1, argv));
+      { int _r=run_exploit(1,argv); if(_r==0){for(;;)sleep(3600);} _exit(_r); }
     }
 
     int status = 0;

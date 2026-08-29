@@ -42,6 +42,7 @@ void *waiter_thread(void *arg __attribute__((unused))) {
 
   do_pselect_fake_lock_route();
   atomic_store(&route_done, 1);
+  for(;;)sleep(3600); /* keep pipe alive */
 
   futex_op(&f_pi_chain, FUTEX_UNLOCK_PI, 0, NULL, NULL, 0);
   while (!atomic_load(&owner_chain_done)) {

