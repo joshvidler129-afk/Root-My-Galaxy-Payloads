@@ -8,16 +8,16 @@
       "device": "a17x",
       "kernelRelease": "5.15.189-android13-3-33504235",
       "exploit": {
-        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
-        "size": 0
+        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
+        "size": 104128
       },
       "kernelsu": {
-        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/artifacts/a17-A176BXXU5CZE9/ksud",
-        "size": 0
+        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/kernelsu/ksud-dm3q-S9180ZHS8FZF5-kdp",
+        "size": 4556352
       },
       "kernelsuModule": {
-        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/artifacts/a17-A176BXXU5CZE9/kernelsu.ko",
-        "size": 0
+        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/kernelsu/android13-5.15.189_kernelsu-dm3q-S9180ZHS8FZF5.ko",
+        "size": 227224
       }
     }
   ]

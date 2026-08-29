@@ -39,6 +39,12 @@
 #define SLIDE_USE_FAKE_TASK 0
 #define SLIDE_TRACEFS_EVENT_ID 108
 #define SLIDE_TRACEFS_WORKER_CALLER_OFF 0x001123c4ULL
+/* qword offset from start of kern_in to the stale rt_mutex_waiter on this
+ * kernel's stack (build android13-3-33504235).  Value 3 was ported from
+ * dm3q (android13-8) and may be wrong for this Exynos build — override at
+ * runtime with env var SLIDE_PSELECT_WORD_SHIFT=N (try 0-6) if pselect
+ * races consistently cause a kernel panic.  Derive the correct value from
+ * do_sys_pselect6/core_sys_select disassembly per docs/PORTING.md. */
 #define SLIDE_PSELECT_WORD_SHIFT 3
 #define SLIDE_P0_OFFSET_CANDIDATES \
   0x000000ULL, 0x010000ULL, 0x020000ULL, 0x030000ULL, \

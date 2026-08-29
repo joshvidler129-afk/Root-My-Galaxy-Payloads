@@ -2,31 +2,6 @@
   "schemaVersion": 3,
   "payloads": [
     {
-      "payloadId": "galaxy-a17x-5g-cz\u04359",
-      "displayName": "Galaxy A17 5G (a17x) | Kernel 5.15.189",
-      "models": [
-        "SM-A176B"
-      ],
-      "firmwares": [
-        "A176BXXU5CZE9"
-      ],
-      "kernelVersions": [
-        "5.15.189-android13-3-33504235"
-      ],
-      "exploit": {
-        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
-        "size": 0
-      },
-      "kernelsu": {
-        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/kernelsu/ksud-dm3q-S9180ZHS8FZF5-kdp",
-        "size": 0
-      },
-      "kernelsuModule": {
-        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/kernelsu/android13-5.15.189_kernelsu-dm3q-S9180ZHS8FZF5.ko",
-        "size": 0
-      }
-    },
-    {
       "payloadId": "galaxy-s25-series-2026-06-07",
       "displayName": "Galaxy S25 series | Kernel 6.6.98",
       "models": [
@@ -259,24 +234,6 @@
       "root": {
         "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-root",
         "size": 25912
-      }
-    },
-    {
-      "payloadId": "galaxy-a17-5g-2026-08-29",
-      "displayName": "Galaxy A17 5G | Kernel 5.15.189",
-      "models": [
-        "SM-A176B"
-      ],
-      "kernelVersions": [
-        "5.15.189"
-      ],
-      "exploit": {
-        "url": "file:///data/local/tmp/cve-2026-43499-app.so",
-        "size": 0
-      },
-      "kernelsu": {
-        "url": "file:///data/local/tmp/ksud-selected",
-        "size": 0
       }
     }
   ]

@@ -115,8 +115,26 @@ int slide_pselect_words_per_set(void) {
   return (slide_pselect_nfds + bits_per_word - 1) / bits_per_word;
 }
 
+static int slide_pselect_word_shift_value(void) {
+  static int cached = -1;
+  if (cached >= 0) return cached;
+  const char *env = getenv("SLIDE_PSELECT_WORD_SHIFT");
+  if (env && *env) {
+    char *end = NULL;
+    errno = 0;
+    long v = strtol(env, &end, 0);
+    if (!errno && end != env && !*end && v >= 0 && v <= 16) {
+      cached = (int)v;
+      pr_info("slide pselect word_shift=%d (env override)\n", cached);
+      return cached;
+    }
+  }
+  cached = SLIDE_PSELECT_WORD_SHIFT;
+  return cached;
+}
+
 int slide_pselect_global_word(int waiter_word) {
-  return SLIDE_PSELECT_WORD_SHIFT + waiter_word;
+  return slide_pselect_word_shift_value() + waiter_word;
 }
 
 int slide_pselect_put_global_word(
