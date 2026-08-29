@@ -84,8 +84,13 @@ download() {
         curl -fsSL --retry 3 -o "$dst" "$url" || err "curl failed for $url"
     elif command -v wget >/dev/null 2>&1; then
         wget -q -O "$dst" "$url" || err "wget failed for $url"
+    elif command -v busybox >/dev/null 2>&1 && busybox wget --help >/dev/null 2>&1; then
+        busybox wget -q -O "$dst" "$url" || err "busybox wget failed for $url"
+    elif command -v toybox >/dev/null 2>&1; then
+        toybox wget -q -O "$dst" "$url" || err "toybox wget failed for $url"
     else
-        err "No curl or wget found — cannot download payloads"
+        err "No curl, wget, busybox wget, or toybox found — push payloads manually:
+  adb push <payload> $dst"
     fi
     local actual
     actual=$(wc -c < "$dst")
