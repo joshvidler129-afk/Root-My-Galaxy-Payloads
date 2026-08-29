@@ -21,8 +21,12 @@
       "kernelsu": {
         "kmi": "android13-5.15",
         "managerPackage": "me.weishu.kernelsu",
-        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/ksud",
+        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/kernelsu/ksud-dm3q-S9180ZHS8FZF5-kdp",
         "size": 4556352
+      },
+      "kernelsuModule": {
+        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/kernelsu/android13-5.15.189_kernelsu-dm3q-S9180ZHS8FZF5.ko",
+        "size": 227224
       }
     }
   ]
