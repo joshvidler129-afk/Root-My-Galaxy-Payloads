@@ -2,6 +2,32 @@
   "schemaVersion": 2,
   "targets": [
     {
+      "profileId": "a17-A176BXXU5CZE9",
+      "manufacturer": "samsung",
+      "model": "SM-A176B",
+      "device": "a17x",
+      "kernelRelease": "5.15.189-android13-3-33504235",
+      "kernelVersion": "Linux version 5.15.189-android13-3-33504235 (dpi@21DN2804) (Android (8490178, based on r450784d) clang version 14.0.6 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6), LLD 14.0.6) #1 SMP PREEMPT Wed May 13 16:54:27 KST 2026",
+      "kernelBuildVersion": "#1 SMP PREEMPT Wed May 13 16:54:27 KST 2026",
+      "buildDisplay": "BP4A.251205.006.A176BXXU5CZE9",
+      "buildFingerprint": "samsung/a17nsxx/a17x:16/AP3A.240905.015.A2/A176BXXU5CZE9:user/release-keys",
+      "sdk": 36,
+      "abi": "arm64-v8a",
+      "pageSize": 4096,
+      "exploit": {
+        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
+        "size": 0
+      },
+      "kernelsu": {
+        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/kernelsu/ksud-dm3q-S9180ZHS8FZF5-kdp",
+        "size": 0
+      },
+      "kernelsuModule": {
+        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/kernelsu/android13-5.15.189_kernelsu-dm3q-S9180ZHS8FZF5.ko",
+        "size": 0
+      }
+    },
+    {
       "profileId": "pa3q-S938NKSUACZF1",
       "manufacturer": "samsung",
       "model": "SM-S938N",
