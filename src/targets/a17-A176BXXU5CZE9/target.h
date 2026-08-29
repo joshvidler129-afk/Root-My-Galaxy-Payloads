@@ -45,7 +45,7 @@
  * runtime with env var SLIDE_PSELECT_WORD_SHIFT=N (try 0-6) if pselect
  * races consistently cause a kernel panic.  Derive the correct value from
  * do_sys_pselect6/core_sys_select disassembly per docs/PORTING.md. */
-#define SLIDE_PSELECT_WORD_SHIFT 3
+#define SLIDE_PSELECT_WORD_SHIFT 0
 #define SLIDE_P0_OFFSET_CANDIDATES \
   0x000000ULL, 0x010000ULL, 0x020000ULL, 0x030000ULL, \
   0x040000ULL, 0x050000ULL, 0x060000ULL, 0x070000ULL, \
