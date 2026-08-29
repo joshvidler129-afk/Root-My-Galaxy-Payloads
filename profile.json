@@ -18,21 +18,11 @@
         "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
         "size": 104128
       },
-      "kernelSu": {
-        "kmi": "android13-5.15",
-        "managerPackage": "me.weishu.kernelsu",
-        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/ksud",
-        "size": 4556352
-      },
       "kernelsu": {
         "kmi": "android13-5.15",
         "managerPackage": "me.weishu.kernelsu",
         "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/ksud",
         "size": 4556352
-      },
-      "kernelsuModule": {
-        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/kernelsu.ko",
-        "size": 227224
       }
     }
   ]
