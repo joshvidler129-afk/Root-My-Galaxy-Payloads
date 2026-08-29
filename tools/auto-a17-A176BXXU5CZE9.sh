@@ -68,36 +68,24 @@ uptime_sec() {
 
 download() {
     local url="$1" dst="$2" expected_size="$3"
-    if [ -f "$dst" ]; then
+    # If file already exists (any size), use it — no download needed
+    if [ -f "$dst" ] && [ -s "$dst" ]; then
         local actual
         actual=$(wc -c < "$dst")
-        if [ "$actual" -eq "$expected_size" ] 2>/dev/null; then
-            log "Already have $(basename "$dst") ($actual bytes)"
-            return 0
-        else
-            warn "Cached $(basename "$dst") has wrong size ($actual vs $expected_size), re-downloading"
-            rm -f "$dst"
-        fi
+        ok "Using pre-pushed $(basename "$dst") ($actual bytes)"
+        return 0
     fi
     log "Downloading $(basename "$dst") from $url"
     if command -v curl >/dev/null 2>&1; then
         curl -fsSL --retry 3 -o "$dst" "$url" || err "curl failed for $url"
     elif command -v wget >/dev/null 2>&1; then
         wget -q -O "$dst" "$url" || err "wget failed for $url"
-    elif command -v busybox >/dev/null 2>&1 && busybox wget --help >/dev/null 2>&1; then
-        busybox wget -q -O "$dst" "$url" || err "busybox wget failed for $url"
-    elif command -v toybox >/dev/null 2>&1; then
-        toybox wget -q -O "$dst" "$url" || err "toybox wget failed for $url"
     else
-        err "No curl, wget, busybox wget, or toybox found — push payloads manually:
-  adb push <payload> $dst"
+        err "$(basename "$dst") not found and no downloader available.
+Push it from your Mac first:
+  adb push <path/to/$(basename "$dst")> $dst"
     fi
-    local actual
-    actual=$(wc -c < "$dst")
-    if [ -n "$expected_size" ] && [ "$actual" -ne "$expected_size" ] 2>/dev/null; then
-        err "Size mismatch for $(basename "$dst"): got $actual, expected $expected_size"
-    fi
-    ok "Downloaded $(basename "$dst") ($actual bytes)"
+    ok "Downloaded $(basename "$dst") ($(wc -c < "$dst") bytes)"
 }
 
 # ---------------------------------------------------------------------------
