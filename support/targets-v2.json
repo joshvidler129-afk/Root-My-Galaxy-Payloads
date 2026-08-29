@@ -15,15 +15,15 @@
       "abi": "arm64-v8a",
       "pageSize": 4096,
       "exploit": {
-        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
+        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
         "size": 0
       },
       "kernelsu": {
-        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/kernelsu/ksud-dm3q-S9180ZHS8FZF5-kdp",
+        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/ksud",
         "size": 0
       },
       "kernelsuModule": {
-        "url": "file:///data/user/0/com.termux/files/home/Root-My-Galaxy-Payloads/kernelsu/android13-5.15.189_kernelsu-dm3q-S9180ZHS8FZF5.ko",
+        "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/kernelsu.ko",
         "size": 0
       }
     },
