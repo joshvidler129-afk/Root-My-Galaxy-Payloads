@@ -20,8 +20,13 @@ set -e
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
-REPO_RAW="https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main"
-WORK="/data/local/tmp/a17-exploit"
+REPO_RAW="https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/claude/release-zip-workload-mr8b88"
+# Use Termux home if available, fall back to /data/local/tmp
+if [ -n "$HOME" ] && [ -w "$HOME" ]; then
+    WORK="$HOME/a17-exploit"
+else
+    WORK="/data/local/tmp/a17-exploit"
+fi
 EXPLOIT_SO="$WORK/cve-2026-43499-app.so"
 ROOT_BIN="$WORK/cve-2026-43499-root"
 KSUD_BIN="$WORK/ksud"
@@ -123,7 +128,7 @@ fi
 # ---------------------------------------------------------------------------
 log "--- Phase 1: Downloading payloads ---"
 mkdir -p "$WORK"
-chmod 700 "$WORK"
+chmod 700 "$WORK" 2>/dev/null || true
 
 download \
     "$REPO_RAW/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so" \
