@@ -16,7 +16,7 @@
       "pageSize": 4096,
       "exploit": {
         "url": "https://github.com/joshvidler129-afk/Root-My-Galaxy-Payloads/releases/download/v3/cve-2026-43499-app.so",
-        "size": 104128
+        "size": 131264
       },
       "kernelsu": {
         "kmi": "android13-5.15",
