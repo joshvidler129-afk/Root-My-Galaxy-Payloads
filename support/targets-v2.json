@@ -16,7 +16,7 @@
       "pageSize": 4096,
       "exploit": {
         "url": "https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main/artifacts/a17-A176BXXU5CZE9/cve-2026-43499-app.so",
-        "size": 0
+        "size": 104128
       },
       "kernelsu": {
         "kmi": "android13-5.15",
