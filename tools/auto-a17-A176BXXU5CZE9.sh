@@ -20,7 +20,7 @@ set -e
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
-REPO_RAW="https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/claude/release-zip-workload-mr8b88"
+REPO_RAW="https://raw.githubusercontent.com/joshvidler129-afk/Root-My-Galaxy-Payloads/main"
 # Use Termux home if available, fall back to /data/local/tmp
 if [ -n "$HOME" ] && [ -w "$HOME" ]; then
     WORK="$HOME/a17-exploit"
